@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/modules/login_screen/login_screen.dart';
@@ -19,7 +17,7 @@ class _SpalashScreen extends State<SpalashScreen> {
   }
 
   void navigateToHome() async {
-    await Future.delayed(Duration(milliseconds: 3), () {});
+    await Future.delayed(const Duration(milliseconds: 3), () {});
     if (TOKEN == null) {
       navigateAndFinish(context, LoginScreen());
     } else {

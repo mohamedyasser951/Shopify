@@ -8,10 +8,12 @@ import 'package:shop_app/shared/component/component.dart';
 import 'package:shop_app/shared/component/constants.dart';
 
 class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var formkey = GlobalKey<FormState>();
-    var SearchController = TextEditingController();
+    var searchController = TextEditingController();
 
     return BlocProvider(
        create: (context) => CubitSearch(),
@@ -28,11 +30,12 @@ class SearchScreen extends StatelessWidget {
                 
                   defeaultTextFormFiel(
                       onSubmit: (val) {
-                        if(formkey.currentState!.validate())
-                        CubitSearch.get(context)
+                        if(formkey.currentState!.validate()) {
+                          CubitSearch.get(context)
                             .getSearch(text: val);
+                        }
                       },
-                      textEditingController: SearchController,
+                      textEditingController: searchController,
                       label: "Search",
                       prefix: Icons.search,
                       type: TextInputType.text,
@@ -46,7 +49,7 @@ class SearchScreen extends StatelessWidget {
                     height: 20.0,
                   ),
                     if (state is SearchLoadingState)
-                     LinearProgressIndicator(),
+                    const LinearProgressIndicator(),
                   const SizedBox(
                     height: 15.0,
                   ),
@@ -54,7 +57,7 @@ class SearchScreen extends StatelessWidget {
                   Expanded(
                     child: ListView.separated(
                     shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
+                    physics:const BouncingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     itemBuilder: ((context, index) => buildListItems(context: context,model: CubitSearch.get(context).searchModel!.data.data[index])),
                     separatorBuilder: ((context, index) => myDivider()),
@@ -99,12 +102,12 @@ Widget buildListItems({ProductData? model, context,}) {
             Text("${model.name}",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style:const TextStyle(
                   fontSize: 14,
                   height: 1.3,
                   color: Colors.black,
                 )),
-            Spacer(),
+           const Spacer(),
             Row(
               children: [
                 Text(
@@ -115,24 +118,24 @@ Widget buildListItems({ProductData? model, context,}) {
                   width: 5.0,
                 ),
                 
-                Spacer(),
+                const Spacer(),
                 CircleAvatar(
                   radius: 15.0,
+                  backgroundColor:
+                      CubitHomeLayout.get(context).favoriets[model.id]!
+                          ? defeaultColor
+                          : Colors.grey,
                   child: IconButton(
                     padding: const EdgeInsets.all(0.0),
                     onPressed: () {
                       CubitHomeLayout.get(context).changeFavorItes(model.id!);
                     },
-                    icon: Icon(
+                    icon:const Icon(
                       Icons.favorite_border_outlined,
                       size: 15.0,
                       color: Colors.white,
                     ),
                   ),
-                  backgroundColor:
-                      CubitHomeLayout.get(context).favoriets[model.id]!
-                          ? defeaultColor
-                          : Colors.grey,
                 )
               ],
             ),

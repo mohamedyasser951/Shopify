@@ -18,7 +18,6 @@ ThemeData lightTheme = ThemeData(
           statusBarIconBrightness: Brightness.dark),
       elevation: 0.0,
       backgroundColor: Colors.white,
-      //color: Colors.white,
       iconTheme: IconThemeData(color: Colors.black),
       titleTextStyle: TextStyle(
           fontFamily: '',
@@ -30,7 +29,7 @@ ThemeData lightTheme = ThemeData(
       selectedItemColor: Colors.pink,
       elevation: 20.0),
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
       color: Colors.black,
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
@@ -43,7 +42,7 @@ ThemeData darkTheme = ThemeData(
    cardColor: HexColor("333739"),
     fontFamily: "NotoSerif",
     textTheme: const TextTheme(
-      bodyText1: TextStyle(
+      bodyLarge: TextStyle(
         fontSize: 18.0,
         color: Colors.white,
         fontWeight: FontWeight.w600,
@@ -242,12 +241,12 @@ Widget buildListItems({model, context}) {
             Text("${model.name}",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style:const TextStyle(
                   fontSize: 14,
                   height: 1.3,
                   color: Colors.black,
                 )),
-            Spacer(),
+           const Spacer(),
             Row(
               children: [
                 Text(
@@ -264,24 +263,24 @@ Widget buildListItems({model, context}) {
                         color: Colors.grey,
                         decoration: TextDecoration.lineThrough),
                   ),
-                Spacer(),
+               const Spacer(),
                 CircleAvatar(
                   radius: 15.0,
+                  backgroundColor:
+                      CubitHomeLayout.get(context).favoriets[model.id]!
+                          ? defeaultColor
+                          : Colors.grey,
                   child: IconButton(
-                    padding: const EdgeInsets.all(0.0),
+                    padding:const  EdgeInsets.all(0.0),
                     onPressed: () {
                       CubitHomeLayout.get(context).changeFavorItes(model.id!);
                     },
-                    icon: Icon(
+                    icon: const  Icon(
                       Icons.favorite_border_outlined,
                       size: 15.0,
                       color: Colors.white,
                     ),
                   ),
-                  backgroundColor:
-                      CubitHomeLayout.get(context).favoriets[model.id]!
-                          ? defeaultColor
-                          : Colors.grey,
                 )
               ],
             ),

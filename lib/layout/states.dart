@@ -1,5 +1,4 @@
 import 'package:shop_app/models/changefavoritesmodel.dart';
-import 'package:shop_app/models/favorites_model.dart';
 import 'package:shop_app/models/user_model.dart';
 
 class HomeLayoutStates {}

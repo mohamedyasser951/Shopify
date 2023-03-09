@@ -6,6 +6,8 @@ import 'package:shop_app/layout/states.dart';
 import 'package:shop_app/shared/component/component.dart';
 
 class settingsScreen extends StatelessWidget {
+  const settingsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     var email = TextEditingController();
@@ -34,7 +36,7 @@ class settingsScreen extends StatelessWidget {
                         child: Column(
                           children: [
                               if (state is UpdateProfileLoadingState)
-                                LinearProgressIndicator(),
+                               const LinearProgressIndicator(),
                              const  SizedBox(height: 20.0,),
                           defeaultTextFormFiel(
                             textEditingController: name,

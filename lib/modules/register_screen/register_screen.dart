@@ -1,7 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/modules/register_screen/cubit_Register.dart';
@@ -16,6 +14,8 @@ class RegisterScreen extends StatelessWidget {
   TextEditingController password = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
+
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

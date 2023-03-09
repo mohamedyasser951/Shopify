@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:shop_app/modules/login_screen/login_screen.dart';
 import 'package:shop_app/shared/component/component.dart';
 import 'package:shop_app/shared/network/local/sheredpref_helper.dart';
@@ -14,6 +12,8 @@ class BoardingModel {
 }
 
 class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
+
 
 
   @override
@@ -78,7 +78,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         });
                       }
                     }),
-                    physics: BouncingScrollPhysics(),
+                    physics:const BouncingScrollPhysics(),
                     controller: pageController,
                     itemCount: 3,
                     itemBuilder: ((context, index) =>
@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       expansionFactor: 4.0,
                       spacing: 5.0),
                 ),
-                Spacer(),
+               const Spacer(),
                 FloatingActionButton(
                   child: const Icon(Icons.arrow_forward_ios_sharp),
                   onPressed: () {
@@ -103,7 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       submiStateOfOnboarding();
                     } else {
                       pageController.nextPage(
-                          duration: Duration(milliseconds: 750),
+                          duration:const Duration(milliseconds: 750),
                           curve: Curves.fastLinearToSlowEaseIn);
                     }
                   },
@@ -122,15 +122,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Expanded(
             child: Image(
               height: 120.0,
-              image: AssetImage("${model.image}"),
+              image: AssetImage(model.image),
             ),
           ),
           Text(
-            "${model.title}",
+            model.title,
             style: const TextStyle(fontSize: 24.0),
           ),
           Text(
-            "${model.body}",
+            model.body,
             style: const TextStyle(fontSize: 14.0),
           ),
         ],

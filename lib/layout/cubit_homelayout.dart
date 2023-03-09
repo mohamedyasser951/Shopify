@@ -23,10 +23,10 @@ class CubitHomeLayout extends Cubit<HomeLayoutStates> {
   int currentIndex = 0;
 
   List<Widget> screens = [
-    ProductsScreen(),
+   const ProductsScreen(),
     CategoriesScreen(),
     FavorietsScreen(),
-    settingsScreen(),
+   const settingsScreen(),
   ];
 
   bool isDark = false;
@@ -109,7 +109,7 @@ class CubitHomeLayout extends Cubit<HomeLayoutStates> {
     emit(GetFavoritesLoadingState());
     DioHelper.getData(url: GET_FAVORITES, token: TOKEN).then((value) {
       favoritesModel = FavoritesModel.fromJson(value.data);
-      print(value.data.toString());
+      // print(value.data.toString());
       emit(GetFavoritesDataSuccessState());
     }).catchError((e) {
       emit(GetFavoritesErrorState());
@@ -121,7 +121,7 @@ class CubitHomeLayout extends Cubit<HomeLayoutStates> {
     emit(GetProfileLoadingState());
     DioHelper.getData(url: GET_PROFILE, token: TOKEN).then((value) {
       userModel = UserModel.fromjson(value.data);
-      print(value.data.toString());
+      // print(value.data.toString());
       emit(GetProfileSuccessState());
     }).catchError((e) {
       emit(GetProfileErrorState());

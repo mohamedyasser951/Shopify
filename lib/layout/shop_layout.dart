@@ -5,8 +5,9 @@ import 'package:shop_app/layout/states.dart';
 import 'package:shop_app/modules/search/search_screen.dart';
 import 'package:shop_app/shared/component/component.dart';
 
-
 class HomeLayout extends StatelessWidget {
+  const HomeLayout({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitHomeLayout, HomeLayoutStates>(
@@ -20,7 +21,7 @@ class HomeLayout extends StatelessWidget {
             actions: [
               IconButton(
                   onPressed: () {
-                    buildGoTo(context: context, Widget: SearchScreen());
+                    buildGoTo(context: context, Widget:const SearchScreen());
                   },
                   icon: const Icon(Icons.search)),
               IconButton(
@@ -39,7 +40,7 @@ class HomeLayout extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.currentIndex,
               onTap: (value) => cubit.changeNavBarState(value),
-              items: [
+              items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.apps), label: "Categories"),

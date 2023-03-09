@@ -13,59 +13,46 @@ import 'package:shop_app/shared/component/constants.dart';
 import 'package:shop_app/shared/network/local/sheredpref_helper.dart';
 import 'package:shop_app/shared/network/remote/dio_helper.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-
   DioHelper.init();
-
   await SharedHelper.init();
   Widget startWidget;
   bool? onBoarding = SharedHelper.getData(key: "onBoarding");
   TOKEN = SharedHelper.getData(key: "token");
-  bool? MODE = SharedHelper.getData(key: "isDark");
+  bool? mode = SharedHelper.getData(key: "isDark");
+  Bloc.observer = MyBlocObserver();
+
+  print(mode);
 
   if (onBoarding != null) {
     if (TOKEN != null) {
-      startWidget = HomeLayout();
+      startWidget = const HomeLayout();
     } else {
       startWidget = LoginScreen();
     }
   } else {
-    startWidget = OnBoardingScreen();
+    startWidget = const OnBoardingScreen();
   }
-
-  BlocOverrides.runZoned(
-    () {
-      runApp(ShopApp(
-        MODE: MODE,
-        startWidget: startWidget,
-      ));
-      ;
-    },
-    blocObserver: MyBlocObserver(),
-  );
+  runApp(ShopApp(mode: mode, startWidget: startWidget));
 }
 
 class ShopApp extends StatelessWidget {
-  bool? MODE;
+  final bool? mode;
 
-  late final Widget startWidget;
-  ShopApp({required this.startWidget,this.MODE});
+  final Widget startWidget;
+  const ShopApp({super.key, required this.startWidget, this.mode});
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
               create: ((context) => CubitHomeLayout()
-                ..changeMode(modeFromShared: MODE)
                 ..getHomeData()
                 ..getCategoryData()
                 ..GetFvorites()
                 ..GetProfile()
-                ..changeMode(modeFromShared: MODE)
-                )),
+                ..changeMode(modeFromShared: mode))),
           BlocProvider(create: ((context) => CubitLogin())),
           BlocProvider(create: ((context) => CubitRegister())),
         ],

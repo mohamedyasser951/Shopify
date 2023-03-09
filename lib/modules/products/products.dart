@@ -1,18 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:shop_app/layout/cubit_homelayout.dart';
 import 'package:shop_app/layout/states.dart';
 import 'package:shop_app/models/categories_model.dart';
-import 'package:shop_app/models/changefavoritesmodel.dart';
 import 'package:shop_app/models/homemodel.dart';
 import 'package:shop_app/shared/component/component.dart';
 import 'package:shop_app/shared/component/constants.dart';
 
 class ProductsScreen extends StatelessWidget {
+  const ProductsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitHomeLayout, HomeLayoutStates>(
@@ -42,7 +41,7 @@ class ProductsScreen extends StatelessWidget {
   Widget buildProductsItem(
       HomeModel model, CategoryModel categoryModel, context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics:const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -85,7 +84,7 @@ class ProductsScreen extends StatelessWidget {
                 Container(
                   height: 100.0,
                   child: ListView.separated(
-                      physics: BouncingScrollPhysics(),
+                      physics:const BouncingScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: ((context, index) =>
                           buildCategoryItems(categoryModel.data.data[index])),
@@ -104,7 +103,7 @@ class ProductsScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
+        const  SizedBox(
             height: 20.0,
           ),
           Container(
@@ -193,7 +192,7 @@ class ProductsScreen extends StatelessWidget {
                             color: Colors.grey,
                             decoration: TextDecoration.lineThrough),
                       ),
-                    Spacer(),
+                   const Spacer(),
                     CircleAvatar(
                       radius: 15.0,
                       backgroundColor:
@@ -208,7 +207,7 @@ class ProductsScreen extends StatelessWidget {
 
                           print(TOKEN);
                         },
-                        icon: Icon(
+                        icon:const Icon(
                           Icons.favorite_border_outlined,
                           size: 15.0,
                           color: Colors.white,
@@ -241,7 +240,7 @@ class ProductsScreen extends StatelessWidget {
           color: Colors.black.withOpacity(0.8),
           child: Text(
             ' ${model.name}',
-            style: TextStyle(
+            style:const TextStyle(
                 overflow: TextOverflow.ellipsis,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),

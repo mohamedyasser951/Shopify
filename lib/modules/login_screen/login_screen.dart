@@ -1,8 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/layout/shop_layout.dart';
 import 'package:shop_app/modules/login_screen/cubit_login.dart';
@@ -17,15 +14,14 @@ class LoginScreen extends StatelessWidget {
   TextEditingController password = TextEditingController();
   var formKey = GlobalKey<FormState>();
 
+  LoginScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitLogin, StatesLogin>(
       listener: ((context, state) {
         if (state is ShopLoginSucceessState) {
-         // print("ya mahmaded ShopLoginSucceessState");
           if (state.loginModel.status) {
-           
-
             SharedHelper.saveTheToken(
                     key: 'token', value: state.loginModel.data!.token)
                 .then((value) {
@@ -53,7 +49,7 @@ class LoginScreen extends StatelessWidget {
           body: Center(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding:const EdgeInsets.all(20.0),
                 child: Form(
                     key: formKey,
                     child: Column(
