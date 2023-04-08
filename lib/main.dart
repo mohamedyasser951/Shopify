@@ -8,8 +8,8 @@ import 'package:shop_app/modules/login_screen/login_screen.dart';
 import 'package:shop_app/modules/onboarding_screen/onboarding_screen.dart';
 import 'package:shop_app/modules/register_screen/cubit_Register.dart';
 import 'package:shop_app/shared/component/block_observer.dart';
-import 'package:shop_app/shared/component/component.dart';
 import 'package:shop_app/shared/component/constants.dart';
+import 'package:shop_app/shared/component/theme.dart';
 import 'package:shop_app/shared/network/local/sheredpref_helper.dart';
 import 'package:shop_app/shared/network/remote/dio_helper.dart';
 
@@ -23,7 +23,6 @@ void main() async {
   bool? mode = SharedHelper.getData(key: "isDark");
   Bloc.observer = MyBlocObserver();
 
-  print(mode);
 
   if (onBoarding != null) {
     if (TOKEN != null) {
@@ -52,7 +51,7 @@ class ShopApp extends StatelessWidget {
                 ..getCategoryData()
                 ..GetFvorites()
                 ..GetProfile()
-                ..changeMode(modeFromShared: mode))),
+             )),
           BlocProvider(create: ((context) => CubitLogin())),
           BlocProvider(create: ((context) => CubitRegister())),
         ],

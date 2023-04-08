@@ -31,10 +31,10 @@ class RegisterScreen extends StatelessWidget {
                 .then((value) {
               TOKEN = state.model.data!.token;
 
-              navigateAndFinish(context, HomeLayout());
+              navigateAndFinish(context, const HomeLayout());
               
             }).catchError((e) {
-              print(e.toString());
+              // print(e.toString());
             });
 
             defeaulttoast(

@@ -17,7 +17,7 @@ class HomeLayout extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             elevation: 0.0,
-            title: const Text("Salla"),
+            title: const Text("Shopify"),
             actions: [
               IconButton(
                   onPressed: () {
@@ -29,11 +29,6 @@ class HomeLayout extends StatelessWidget {
                     logOut(context);
                   },
                   icon: const Icon(Icons.logout)),
-              IconButton(
-                  onPressed: () {
-                    CubitHomeLayout.get(context).changeMode();
-                  },
-                  icon: const Icon(Icons.dark_mode))
             ],
           ),
           body: cubit.screens[cubit.currentIndex],

@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
                 .then((value) {
               TOKEN = state.loginModel.data!.token;
 
-              navigateAndFinish(context, HomeLayout());
+              navigateAndFinish(context, const HomeLayout());
               
             }).catchError((e) {
               print(e.toString());

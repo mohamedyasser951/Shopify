@@ -5,6 +5,8 @@ import 'package:shop_app/shared/component/component.dart';
 import 'package:shop_app/shared/component/constants.dart';
 
 class SpalashScreen extends StatefulWidget {
+  const SpalashScreen({super.key});
+
   @override
   State<SpalashScreen> createState() => _SpalashScreen();
 }
@@ -21,7 +23,7 @@ class _SpalashScreen extends State<SpalashScreen> {
     if (TOKEN == null) {
       navigateAndFinish(context, LoginScreen());
     } else {
-      navigateAndFinish(context, HomeLayout());
+      navigateAndFinish(context, const HomeLayout());
     }
   }
 

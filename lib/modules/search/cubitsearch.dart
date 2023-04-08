@@ -26,7 +26,7 @@ class CubitSearch extends Cubit<SearchStates> {
     //   print("search model full ${value.data}");
       emit(SearchSuccessState());
     }).catchError((error) {
-      print(error);
+      // print(error);
       emit(SearchErrorState());
     });
   }

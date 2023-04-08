@@ -78,10 +78,10 @@ class SearchScreen extends StatelessWidget {
 Widget buildListItems({ProductData? model, context,}) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
-    child: Container(
+    child: SizedBox(
       height: 100.0,
       child: Row(children: [
-        Container(
+        SizedBox(
           width: 100.0,
           height: 100.0,
           child: Stack(

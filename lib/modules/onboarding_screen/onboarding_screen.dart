@@ -14,8 +14,6 @@ class BoardingModel {
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
-
-
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
@@ -38,21 +36,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         title: "Explore",
         body:
             "Choose Whatever the Product you wish for with easiest Way possible using ShopMarket ",
-        image: "assets/images/onboarding_image1.jpg"),
+        image: "assets/images/onboarding_image1.png"),
     BoardingModel(
         title: "Shiping",
         body:
             "Your Order will be Shipped to you as fast as possible by our Carrier",
-        image: "assets/images/onboarding_image10.jpg"),
+        image: "assets/images/onboarding_image10.png"),
     BoardingModel(
-        title: "Screen title3",
-        body: "screen title3",
+        title: "Get IT Deliverred",
+        body: "our Order will be Delivered to you faster",
         image: "assets/images/onboarding_image0.png"),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         actions: [
           TextButton(
               onPressed: () {
@@ -78,7 +77,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         });
                       }
                     }),
-                    physics:const BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     controller: pageController,
                     itemCount: 3,
                     itemBuilder: ((context, index) =>
@@ -95,7 +94,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       expansionFactor: 4.0,
                       spacing: 5.0),
                 ),
-               const Spacer(),
+                const Spacer(),
                 FloatingActionButton(
                   child: const Icon(Icons.arrow_forward_ios_sharp),
                   onPressed: () {
@@ -103,7 +102,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       submiStateOfOnboarding();
                     } else {
                       pageController.nextPage(
-                          duration:const Duration(milliseconds: 750),
+                          duration: const Duration(milliseconds: 750),
                           curve: Curves.fastLinearToSlowEaseIn);
                     }
                   },
@@ -131,7 +130,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
           Text(
             model.body,
-            style: const TextStyle(fontSize: 14.0),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ],
       );

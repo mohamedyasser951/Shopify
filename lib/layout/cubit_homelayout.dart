@@ -1,5 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/cupertino.dart';
- import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/layout/states.dart';
 import 'package:shop_app/models/categories_model.dart';
 import 'package:shop_app/models/changefavoritesmodel.dart';
@@ -24,8 +26,8 @@ class CubitHomeLayout extends Cubit<HomeLayoutStates> {
 
   List<Widget> screens = [
    const ProductsScreen(),
-    CategoriesScreen(),
-    FavorietsScreen(),
+   const CategoriesScreen(),
+   const FavorietsScreen(),
    const settingsScreen(),
   ];
 
@@ -57,10 +59,10 @@ class CubitHomeLayout extends Cubit<HomeLayoutStates> {
     DioHelper.getData(url: HOME).then((value) {
       homeModel = HomeModel.fromjson(value.data);
 
-      homeModel!.data!.products.forEach((element) {
+      for (var element in homeModel!.data!.products) {
         favoriets.addAll({element.id: element.inFavorites});
         // print("hi broo ${favoriets.toString()}");
-      });
+      }
 
       emit(HomeDataSuccessState());
     }).catchError((e) {

@@ -6,6 +6,8 @@ import 'package:shop_app/models/categories_model.dart';
 import 'package:shop_app/shared/component/component.dart';
 
 class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitHomeLayout, HomeLayoutStates>(
@@ -26,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
 
   Widget buildCategoryItem(DataModel model) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -36,14 +38,14 @@ class CategoriesScreen extends StatelessWidget {
             image: NetworkImage("${model.image}"),
             fit: BoxFit.cover,
           ),
-          SizedBox(
+          const SizedBox(
             width: 20.0,
           ),
           Text(
             "${model.name}",
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios))
         ],

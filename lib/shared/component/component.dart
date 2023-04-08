@@ -1,70 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:shop_app/layout/cubit_homelayout.dart';
 import 'package:shop_app/modules/login_screen/login_screen.dart';
 import 'package:shop_app/shared/component/constants.dart';
 import 'package:shop_app/shared/network/local/sheredpref_helper.dart';
 
-ThemeData lightTheme = ThemeData(
-  fontFamily: "NotoSerif",
-  primarySwatch: defeaultColor,
-  scaffoldBackgroundColor: Colors.white,
-  appBarTheme: const AppBarTheme(
-      titleSpacing: 20.0,
-      systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark),
-      elevation: 0.0,
-      backgroundColor: Colors.white,
-      iconTheme: IconThemeData(color: Colors.black),
-      titleTextStyle: TextStyle(
-          fontFamily: '',
-          fontWeight: FontWeight.bold,
-          fontSize: 20.0,
-          color: Colors.black)),
-  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.pink,
-      elevation: 20.0),
-  textTheme: const TextTheme(
-    bodyLarge: TextStyle(
-      color: Colors.black,
-      fontSize: 18.0,
-      fontWeight: FontWeight.w600,
-    ),
-  ),
-);
 
-ThemeData darkTheme = ThemeData(
-  ///
-   cardColor: HexColor("333739"),
-    fontFamily: "NotoSerif",
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(
-        fontSize: 18.0,
-        color: Colors.white,
-        fontWeight: FontWeight.w600,
-      ),
-    ),
-    primarySwatch: Colors.pink,
-    scaffoldBackgroundColor: HexColor("333739"),
-    appBarTheme: AppBarTheme(
-        titleSpacing: 20.0,
-        backgroundColor: HexColor("333739"),
-        
-        iconTheme: const IconThemeData(color: Colors.white),
-        systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: HexColor('333739'),
-          statusBarIconBrightness: Brightness.light,
-        )),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: HexColor('333739'),
-        selectedItemColor: Colors.pink,
-        unselectedItemColor: Colors.grey,
-        unselectedIconTheme: const IconThemeData(color: Colors.grey)));
 
 Widget defeaultTextFormFiel({
   required TextEditingController textEditingController,
@@ -85,7 +26,7 @@ Widget defeaultTextFormFiel({
       obscureText: isPassword,
       validator: validator,
       decoration: InputDecoration(
-        border: OutlineInputBorder(borderSide: BorderSide(width: 2)),
+        border: const OutlineInputBorder(borderSide: BorderSide(width: 2)),
         labelText: label,
         prefixIcon: Icon(prefix),
         suffixIcon: suffix != null
@@ -100,7 +41,7 @@ Widget defeaultTextFormFiel({
     );
 
 Widget defeaultButton({
-  Color color = Colors.blue,
+  Color color = Colors.pink,
   double width = double.infinity,
   required var function,
   required String text,
@@ -109,7 +50,7 @@ Widget defeaultButton({
 }) =>
     Container(
       width: width,
-      height: 40.0,
+      height: 50.0,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(radius),
@@ -137,19 +78,19 @@ Widget defeaultTextButton({
       child: Text(text),
     );
 
-Widget? buildGoTo({required context, required Widget}) {
+void buildGoTo({required context, required Widget}) {
   Navigator.push(context, MaterialPageRoute(builder: (context) => Widget));
 }
 
-Widget? navigatePushAndReplacement({required context, required widget}) {
+void navigatePushAndReplacement({required context, required widget}) {
   Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => widget));
 }
 
-void navigateAndFinish(context, Widget) => Navigator.pushAndRemoveUntil(
+void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
-        builder: (context) => Widget,
+        builder: (context) => widget,
       ),
       (route) {
         return false;
@@ -174,6 +115,7 @@ dynamic defeaulttoast({required String message, required ToastState state}) =>
         textColor: Colors.white,
         fontSize: 16.0);
 
+// ignore: constant_identifier_names
 enum ToastState { SUCESS, WARNING, ERROE }
 
 Color changeToastColor(ToastState state) {
@@ -203,10 +145,10 @@ void logOut(context) {
 Widget buildListItems({model, context}) {
   return Padding(
     padding: const EdgeInsets.all(5.0),
-    child: Container(
+    child: SizedBox(
       height: 100.0,
       child: Row(children: [
-        Container(
+        SizedBox(
           width: 100.0,
           height: 100.0,
           child: Stack(

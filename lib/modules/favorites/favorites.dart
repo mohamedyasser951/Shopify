@@ -8,6 +8,8 @@ import 'package:shop_app/shared/component/component.dart';
 import '../../shared/component/constants.dart';
 
 class FavorietsScreen extends StatelessWidget {
+  const FavorietsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitHomeLayout, HomeLayoutStates>(

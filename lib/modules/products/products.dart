@@ -81,7 +81,7 @@ class ProductsScreen extends StatelessWidget {
                   'Categories',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
-                Container(
+                SizedBox(
                   height: 100.0,
                   child: ListView.separated(
                       physics:const BouncingScrollPhysics(),
